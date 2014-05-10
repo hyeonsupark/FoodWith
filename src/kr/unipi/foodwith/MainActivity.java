@@ -53,8 +53,7 @@ public class MainActivity extends Activity {
 			try {
 				OAuthInfoManager.login(this, oauthListener);
 				OAuthInfoManager.saveOAuthInfo();
-				editor.putBoolean("loginFlag", false);
-				editor.commit();
+				
 				dlg.show();
 
 			} catch (PlanetXOAuthException e) {
@@ -160,7 +159,8 @@ public class MainActivity extends Activity {
 
 			Log.d("FOOD", "onComplete : " + arg0);
 			networking();
-			
+			editor.putBoolean("loginFlag", false);
+			editor.commit();
 			dlg.dismiss();
 		}
 	};

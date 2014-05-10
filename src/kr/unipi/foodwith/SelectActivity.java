@@ -6,29 +6,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.skp.Tmap.TMapGpsManager.onLocationChangedCallback;
-import com.skp.Tmap.TMapPoint;
-import com.skp.Tmap.TMapView;
 import com.skp.openplatform.android.sdk.api.APIRequest;
 import com.skp.openplatform.android.sdk.common.PlanetXSDKConstants.CONTENT_TYPE;
+import com.skp.openplatform.android.sdk.common.PlanetXSDKConstants.HttpMethod;
 import com.skp.openplatform.android.sdk.common.PlanetXSDKException;
 import com.skp.openplatform.android.sdk.common.RequestBundle;
-import com.skp.openplatform.android.sdk.common.ResponseMessage;
-import com.skp.openplatform.android.sdk.common.PlanetXSDKConstants.HttpMethod;
 import com.skp.openplatform.android.sdk.common.RequestListener;
+import com.skp.openplatform.android.sdk.common.ResponseMessage;
 
 public class SelectActivity extends Activity implements OnClickListener,
 		LocationListener {
@@ -73,9 +73,22 @@ public class SelectActivity extends Activity implements OnClickListener,
 		checkGps();
 		allocBtn();
 		networking();
-		tvLocation.setText(pref.getString("location", "Press To Refresh"));
+		tvLocation.setText(pref.getString("fullAddress", "Press To Refresh"));
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.post, menu);
+		
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		startActivity(new Intent(SelectActivity.this, PostActivity.class));
+		return super.onOptionsItemSelected(item);
+	}
 	public void initUi() {
 		requestBundle = new RequestBundle();
 
@@ -93,7 +106,7 @@ public class SelectActivity extends Activity implements OnClickListener,
 		pref = getSharedPreferences("pref", 0);
 		editor = pref.edit();
 		try {
-			json = new JSONObject(pref.getString("result", "Prefresh  to Refresh"));
+			json = new JSONObject(pref.getString("result", "야호"));
 			String profile = json.getString("profile");
 
 			json = new JSONObject(profile);
@@ -186,7 +199,7 @@ public class SelectActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPostExecute(Long result) {
 			super.onPostExecute(result);
-			tvLocation.setText(pref.getString("location", "Press To Refresh"));
+			tvLocation.setText(pref.getString("fullAddress", "Press To Refresh"));
 		}
 	}
 
@@ -210,7 +223,7 @@ public class SelectActivity extends Activity implements OnClickListener,
 			jsonObject = new JSONObject(addressInfo);
 			fullAddress = jsonObject.getString("fullAddress");
 
-			editor.putString("location", fullAddress);
+			editor.putString("fullAddress", fullAddress);
 			editor.commit();
 
 		} catch (JSONException e) {

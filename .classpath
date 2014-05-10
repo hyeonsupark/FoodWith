@@ -6,8 +6,8 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Hyunsu/Desktop/beLaunch/FoodWith/libs/com.skp.Tmap_1.0.21.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Hyunsu/Desktop/beLaunch/FoodWith/libs/google-play-services.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Hyunsu/Desktop/beLaunch/FoodWith/libs/PlanetX_SDK_And.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Hyunsu/Desktop/beLaunch/FoodWith/libs/SKPOP_SDK_OAuth_And_1.0.4.jar"/>
+	<classpathentry kind="lib" path="/google-play-services_lib"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
