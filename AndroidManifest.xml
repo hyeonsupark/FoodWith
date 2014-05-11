@@ -51,6 +51,10 @@
             android:name="kr.unipi.foodwith.ListActivity"
             android:label="@string/title_activity_list" >
         </activity>
+        <activity
+            android:name="kr.unipi.foodwith.DetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
     </application>
 
 </manifest>

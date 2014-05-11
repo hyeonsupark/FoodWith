@@ -1,12 +1,12 @@
 package kr.unipi.foodwith;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setBackgroundDrawable(new ColorDrawable(0xffeb5655));
 		setContentView(R.layout.activity_main);
 		initOAuthData();
 		initUI();
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
 			try {
 				OAuthInfoManager.login(this, oauthListener);
 				OAuthInfoManager.saveOAuthInfo();
-				
+
 				dlg.show();
 
 			} catch (PlanetXOAuthException e) {
@@ -77,7 +78,7 @@ public class MainActivity extends Activity {
 
 	public void initUI() {
 		dlg = new ProgressDialog(this);
-		dlg.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		dlg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		pref = getSharedPreferences("pref", 0);
 		editor = pref.edit();
 	}
@@ -118,10 +119,9 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 			return null;
-			
-			
+
 		}
-		
+
 		@Override
 		protected void onPostExecute(Long result) {
 			super.onPostExecute(result);
@@ -130,6 +130,7 @@ public class MainActivity extends Activity {
 			finish();
 		}
 	}
+	
 
 	RequestListener reqListener = new RequestListener() {
 

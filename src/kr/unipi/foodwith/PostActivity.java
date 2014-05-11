@@ -16,7 +16,9 @@ import org.apache.http.util.EntityUtils;
 import com.google.api.client.http.HttpResponse;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -53,17 +57,22 @@ public class PostActivity extends Activity {
 	EditText etArticle;
 
 	TimePicker timePicker;
+	DatePicker datePicker;
+	Button mapButton;
 
 	int mHour;
 	int mMinute;
 
 	StringBuilder builder;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setBackgroundDrawable(new ColorDrawable(0xffeb5655));
 		setContentView(R.layout.activity_post);
 		initUi();
+		
 		/**
 		 * SharedPreference title : 제목 article : 내용 people : 인원 category : 음식
 		 * 카테고리 time : 시간 XX:XX
@@ -83,7 +92,7 @@ public class PostActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		String title = etTitle.getText().toString();
 		String article = etArticle.getText().toString();
-		if (title.equals(null) || article.equals("")) {
+		if (title.equals("") || article.equals("")) {
 			Toast.makeText(this, "공백을 채워주세요", Toast.LENGTH_SHORT).show();
 		} else {
 			editor.putString("title", title);
@@ -102,7 +111,6 @@ public class PostActivity extends Activity {
 	public void initUi() {
 		pref = getSharedPreferences("pref", MODE_PRIVATE);
 		editor = pref.edit();
-
 		builder = new StringBuilder();
 
 		peopleSpinner = (Spinner) findViewById(R.id.SPINNER_PEOPLE);
@@ -111,7 +119,17 @@ public class PostActivity extends Activity {
 		etTitle = (EditText) findViewById(R.id.ET_TITLE);
 		etArticle = (EditText) findViewById(R.id.ET_ARTICLE);
 
-		timePicker = (TimePicker) findViewById(R.id.timePicker1);
+		timePicker = (TimePicker) findViewById(R.id.post_time);
+		datePicker = (DatePicker) findViewById(R.id.post_date);
+		datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+			
+			@Override
+			public void onDateChanged(DatePicker view, int year, int monthOfYear,
+					int dayOfMonth) {
+				editor.putString("date", year + "-" + (monthOfYear+1) + "-" + dayOfMonth);
+				editor.commit();
+			}
+		});
 		mHour = timePicker.getCurrentHour();
 		mMinute = timePicker.getCurrentMinute();
 		timePicker.setOnTimeChangedListener(new OnTimeChangedListener() {
@@ -145,6 +163,16 @@ public class PostActivity extends Activity {
 			}
 		});
 
+		mapButton = (Button)findViewById(R.id.post_mapbutton);
+		mapButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent = new Intent(PostActivity.this, MapActivity.class);
+				startActivity(intent);
+			}
+		});
 		categorySpinner.setPrompt("카테고리를 선택해주세요");
 		categoryAdapter = ArrayAdapter.createFromResource(this,
 				R.array.category, android.R.layout.simple_spinner_item);
@@ -195,7 +223,7 @@ public class PostActivity extends Activity {
 				list.add(new BasicNameValuePair("article", "\""
 						+ pref.getString("article", "내용") + "\""));
 				list.add(new BasicNameValuePair("placename", "\""
-						+ pref.getString("placename", "장소") + "\""));
+						+ pref.getString("poiAddress", "장소") + "\""));
 				list.add(new BasicNameValuePair("placelat", "\""
 						+ pref.getString("placelat", "0.0") + "\""));
 				list.add(new BasicNameValuePair("placelon", "\""

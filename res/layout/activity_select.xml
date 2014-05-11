@@ -8,101 +8,87 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp" >
+        android:background="@drawable/thunder_refreshbar" >
 
         <TextView
             android:id="@+id/TV_LOCATION"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:text="Press To REFRESH"
             android:textSize="22sp" />
 
         <Button
             android:id="@+id/BTN_REFRESH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_width="99.5dp"
+            android:layout_height="43.5dp"
             android:layout_alignParentRight="true"
-            android:text="야호" />
+            android:layout_centerVertical="true"
+            android:background="@drawable/thunder_refresh" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingLeft="6dp"
-        android:paddingRight="6dp" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/BTN_KOREAN_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_koreanfood" />
 
         <Button
             android:id="@+id/BTN_WESTERN_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_westernfood" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingLeft="6dp"
-        android:paddingRight="6dp" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/BTN_CHINESE_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_chinafood" />
 
         <Button
             android:id="@+id/BTN_JAPANESE_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_japanfood" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingLeft="6dp"
-        android:paddingRight="6dp" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/BTN_FLOUR_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_snackfood" />
 
         <Button
             android:id="@+id/BTN_MIDNIGHT_FOOD"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/thunder_nightfood" />
     </LinearLayout>
 
 </LinearLayout>

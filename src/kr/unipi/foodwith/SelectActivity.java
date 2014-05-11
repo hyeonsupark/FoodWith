@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -67,6 +68,7 @@ public class SelectActivity extends Activity implements OnClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setBackgroundDrawable(new ColorDrawable(0xffeb5655));
 		setContentView(R.layout.activity_select);
 
 		initUi();
@@ -112,10 +114,11 @@ public class SelectActivity extends Activity implements OnClickListener,
 
 			json = new JSONObject(profile);
 			String userName = json.getString("userName");
-
+			String email = json.getString("email");
 			Log.d("FOOD", "userName : " + userName);
-
+			Log.d("FOOD", "email : " + email);
 			editor.putString("userName", userName);
+			editor.putString("email", email);
 			editor.commit();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -137,32 +140,32 @@ public class SelectActivity extends Activity implements OnClickListener,
 		Intent mIntent = new Intent(SelectActivity.this, ListActivity.class);
 		switch (v.getId()) {
 		case R.id.BTN_KOREAN_FOOD:
-			mIntent.putExtra("category", "korean");
+			mIntent.putExtra("category", "한식");
 			startActivity(mIntent);
 			break;
 
 		case R.id.BTN_WESTERN_FOOD:
-			mIntent.putExtra("category", "western");
+			mIntent.putExtra("category", "양식");
 			startActivity(mIntent);
 			break;
 
 		case R.id.BTN_CHINESE_FOOD:
-			mIntent.putExtra("category", "chinese");
+			mIntent.putExtra("category", "중식");
 			startActivity(mIntent);
 			break;
 
 		case R.id.BTN_JAPANESE_FOOD:
-			mIntent.putExtra("category", "japanese");
+			mIntent.putExtra("category", "일식");
 			startActivity(mIntent);
 			break;
 
 		case R.id.BTN_FLOUR_FOOD:
-			mIntent.putExtra("category", "flour");
+			mIntent.putExtra("category", "분식");
 			startActivity(mIntent);
 			break;
 
 		case R.id.BTN_MIDNIGHT_FOOD:
-			mIntent.putExtra("category", "midnight");
+			mIntent.putExtra("category", "야식");
 			startActivity(mIntent);
 			break;
 
@@ -230,11 +233,21 @@ public class SelectActivity extends Activity implements OnClickListener,
 		try {
 			jsonObject = new JSONObject(pref.getString("location",
 					"Press To Refresh"));
+			json = new JSONObject(pref.getString("result", "야호"));
 			String addressInfo = jsonObject.getString("addressInfo");
 			jsonObject = new JSONObject(addressInfo);
 			fullAddress = jsonObject.getString("fullAddress");
-
 			editor.putString("fullAddress", fullAddress);
+			
+			String profile = json.getString("profile");
+
+			json = new JSONObject(profile);
+			String userName = json.getString("userName");
+			String email = json.getString("email");
+			Log.d("FOOD", "userName : " + userName);
+			Log.d("FOOD", "email : " + email);
+			editor.putString("userName", userName);
+			editor.putString("email", email);
 			editor.commit();
 
 		} catch (JSONException e) {

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FoodWith</string>
+    <string name="app_name">벙개</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_select">SelectActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_post">PostActivity</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_select">벙개</string>
+    <string name="title_activity_login">벙개</string>
+    <string name="title_activity_post">벙개</string>
+    <string name="title_activity_map">벙개</string>
+    <string name="title_activity_list">벙개</string>
+    <string name="title_activity_detail">벙개</string>
 
 </resources>

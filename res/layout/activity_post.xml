@@ -9,6 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".PostActivity" >
 
+<ScrollView 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="인원" />
+            android:text="카테고리" />
 
         <Spinner
             android:id="@+id/SPINNER_CATEGORY"
@@ -83,14 +89,40 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="32pt"
                 android:text="시간" />
 
             <TimePicker
-                android:id="@+id/timePicker1"
+                android:id="@+id/post_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32pt"
+                android:text="날짜" />
+
+            <DatePicker
+                android:id="@+id/post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        
+        <Button 
+            android:id="@+id/post_mapbutton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rotation"
+            />
+        
+    </LinearLayout>
+    
+</ScrollView>
 </LinearLayout>
