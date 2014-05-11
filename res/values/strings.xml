@@ -8,5 +8,6 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_post">PostActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_list">ListActivity</string>
 
 </resources>

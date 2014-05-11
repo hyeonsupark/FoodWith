@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="87.5dp" >
+
+        <LinearLayout
+            android:id="@+id/LINEAR_IMAGE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/LIST_IMG"
+                android:layout_width="87.5dp"
+                android:layout_height="87.5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/LINEAR_IMAGE"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/LIST_TV_TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="제목"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/LIST_TV_AUTHOR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="개설자"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/LIST_TV_LOCATION"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="위치"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/LIST_TV_TIME"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="시간"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/LIST_TV_PEOPLE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="7dp"
+            android:text="1/10"
+            android:textSize="17sp"
+            android:textColor="#EB5655" />
+    </RelativeLayout>
+
+</LinearLayout>
